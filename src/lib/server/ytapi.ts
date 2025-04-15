@@ -1,4 +1,6 @@
-import { youtube, youtube_v3 } from '@googleapis/youtube';
+import { youtube } from '@googleapis/youtube';
+import type { youtube_v3 } from '@googleapis/youtube';
+
 import { MY_API_KEY } from '$env/static/private';
 
 const youtubeThing = youtube({
