@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+html,
+body {
+    @apply h-full
+}
+
+
+@theme inline {
+    --color-primary-fg: var(--color-black);
+    --color-primary: var(--color-lime-100);
+    --color-secondary-fg: var(--color-black);
+    --color-secondary: var(--color-orange-300);
+}
+
+@media (prefers-color-scheme: dark) {
+    @theme inline {
+        --color-primary-fg: var(--color-black);
+        --color-primary: var(--color-lime-300);
+        --color-secondary-fg: var(--color-black);
+        --color-secondary: var(--color-orange-600);
+    }
+}
