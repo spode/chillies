@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "title chillies && vite dev --port 6673 --host",
+		"dev": "title chillies localhost:6673 && vite dev --port 6673 --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -14,17 +14,17 @@
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^4.0.0",
-		"@sveltejs/kit": "^2.20.7",
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/kit": "^2.20.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@tailwindcss/vite": "^4.1.4",
+		"@tailwindcss/vite": "^4.1.5",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
-		"svelte": "^5.27.0",
-		"svelte-check": "^4.1.6",
-		"tailwindcss": "^4.1.4",
+		"svelte": "^5.28.2",
+		"svelte-check": "^4.1.7",
+		"tailwindcss": "^4.1.5",
 		"typescript": "^5.8.3",
-		"vite": "^6.2.6"
+		"vite": "^6.3.5"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
@@ -32,8 +32,8 @@
 		]
 	},
 	"dependencies": {
-		"@googleapis/youtube": "^24.0.0",
-		"@types/youtube": "^0.1.0",
+		"@googleapis/youtube": "^25.0.0",
+		"@types/youtube": "^0.1.1",
 		"html-entities": "^2.6.0"
 	}
 }

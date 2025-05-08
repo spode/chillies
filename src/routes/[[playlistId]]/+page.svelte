@@ -1,22 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Player from './Player.svelte';
 	import Streams from './Streams.svelte';
 	import type { youtube_v3 } from '@googleapis/youtube';
 
 	let { data } = $props();
-	let firstItem: string | null | undefined = $state('');
 	let player: YT.Player | undefined = $state();
 	let activeStream: youtube_v3.Schema$SearchResult | null | undefined = $state.raw(null);
 
-	// $inspect(data);
-
-	onMount(async () => {
-		const promises = await data.promises[0];
-		if (promises && promises.items) firstItem = promises.items[0].id?.videoId;
-	});
+	$inspect(data);
 
 	function playSong(item: youtube_v3.Schema$SearchResult) {
+		// console.log('HLELO', item);
+
 		if (!player) return;
 		activeStream = item;
 		console.log(item);
@@ -29,14 +24,14 @@
 
 <div class="h-full flex lg:flex-row flex-col">
 	{#if streamsVisible}
-		<Streams {activeStream} {playSong} promises={data.promises} />
+		<Streams {activeStream} {playSong} videos={data.videos} />
 	{/if}
 	<div class="flex flex-col xl:flex-row flex-1">
 		<button
-			class="bg-primary text-primary-fg py-4 px-2 cursor-pointer"
+			class="bg-primary text-primary-fg py-4 px-2 cursor-pointer rounded-2xl m-2"
 			onclick={() => (streamsVisible = !streamsVisible)}
 			>{streamsVisible ? 'hide' : 'show'} playlists</button
 		>
-		<Player bind:player videoId={firstItem} />
+		<Player bind:player />
 	</div>
 </div>

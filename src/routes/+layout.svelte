@@ -5,3 +5,7 @@
 </script>
 
 {@render children()}
+
+<svelte:head>
+	<title>chill vgm livestreams</title>
+</svelte:head>

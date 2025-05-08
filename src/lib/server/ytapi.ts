@@ -8,7 +8,7 @@ const youtubeThing = youtube({
     auth: MY_API_KEY
 });
 
-export async function getSearchResults(channelId: string) {
+export async function getLiveSearchResults(channelId: string) {
 
     try {
 
@@ -22,8 +22,35 @@ export async function getSearchResults(channelId: string) {
 
         const res = await youtubeThing.search.list(params);
 
-        return res.data;
+        return await res.data;
     } catch (error) {
         console.error('Error getting searchResults:', error);
     }
+}
+
+export async function getPlaylistItems(playlistId: string) {
+
+    let nextPageToken: string | null | undefined = "";
+    const allItems = [];
+
+    do {
+        const params: youtube_v3.Params$Resource$Playlistitems$List = {
+            playlistId: playlistId, // no need for array brackets
+            part: ["snippet"],
+            maxResults: 50,
+            pageToken: nextPageToken
+        };
+
+        const res = await youtubeThing.playlistItems.list(params);
+
+        if (res.data.items) {
+            allItems.push(...res.data.items);
+        }
+
+        nextPageToken = res.data.nextPageToken;
+        console.log("Next page token:", nextPageToken);
+
+    } while (nextPageToken);
+
+    return allItems
 }

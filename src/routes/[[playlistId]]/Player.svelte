@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let { videoId, player = $bindable() } = $props();
+	let { player = $bindable() } = $props();
 	let iframe = $state();
 
 	function onPlayerReady(event) {}
@@ -10,7 +10,6 @@
 		player = new YT.Player('denkPlayer', {
 			height: '390',
 			width: '640',
-			videoId: videoId,
 			events: {
 				onReady: onPlayerReady
 			}
@@ -23,7 +22,7 @@
 	allowfullscreen
 	id={'denkPlayer'}
 	class="w-full h-full"
-	src="https://www.youtube.com/embed/{videoId}?enablejsapi=1"
+	src="https://www.youtube.com/embed/{'4xDzrJKXOOY'}?enablejsapi=1"
 	title="ytIframe"
 ></iframe>
 

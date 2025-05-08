@@ -2,7 +2,7 @@
 
 html,
 body {
-    @apply h-full
+    @apply h-full dark:bg-gray-950 dark:text-white
 }
 
 
@@ -15,9 +15,9 @@ body {
 
 @media (prefers-color-scheme: dark) {
     @theme inline {
-        --color-primary-fg: var(--color-black);
-        --color-primary: var(--color-lime-300);
-        --color-secondary-fg: var(--color-black);
+        --color-primary-fg: var(--color-gray-100);
+        --color-primary: var(--color-gray-800);
+        --color-secondary-fg: var(--color-white);
         --color-secondary: var(--color-orange-600);
     }
 }
