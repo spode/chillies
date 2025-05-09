@@ -28,7 +28,7 @@
 	{/if}
 	<div class="flex flex-col xl:flex-row flex-1">
 		<button
-			class="bg-primary text-primary-fg py-4 px-2 cursor-pointer rounded-2xl m-2"
+			class="dark:bg-primary bg-lime-400 text-black py-4 px-2 cursor-pointer rounded-2xl m-2"
 			onclick={() => (streamsVisible = !streamsVisible)}
 			>{streamsVisible ? 'hide' : 'show'} playlists</button
 		>
