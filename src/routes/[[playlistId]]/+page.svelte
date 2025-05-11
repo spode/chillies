@@ -7,11 +7,7 @@
 	let player: YT.Player | undefined = $state();
 	let activeStream: youtube_v3.Schema$SearchResult | null | undefined = $state.raw(null);
 
-	$inspect(data);
-
 	function playSong(item: youtube_v3.Schema$SearchResult) {
-		// console.log('HLELO', item);
-
 		if (!player) return;
 		activeStream = item;
 		console.log(item);
@@ -23,15 +19,19 @@
 </script>
 
 <div class="h-full flex lg:flex-row flex-col">
-	{#if streamsVisible}
-		<Streams {activeStream} {playSong} videos={data.videos} />
+	{#if data.videos}
+		{#if streamsVisible}
+			<Streams {activeStream} {playSong} videos={data.videos} />
+		{/if}
+		<div class="flex flex-col xl:flex-row flex-1">
+			<button
+				class="dark:bg-primary dark:text-gray-100 bg-lime-400 text-black py-4 px-2 cursor-pointer rounded-2xl m-2"
+				onclick={() => (streamsVisible = !streamsVisible)}
+				>{streamsVisible ? 'hide' : 'show'} playlists</button
+			>
+			<Player bind:player />
+		</div>
+	{:else}
+		<p>api error perhaps</p>
 	{/if}
-	<div class="flex flex-col xl:flex-row flex-1">
-		<button
-			class="dark:bg-primary dark:text-gray-100 bg-lime-400 text-black py-4 px-2 cursor-pointer rounded-2xl m-2"
-			onclick={() => (streamsVisible = !streamsVisible)}
-			>{streamsVisible ? 'hide' : 'show'} playlists</button
-		>
-		<Player bind:player />
-	</div>
 </div>

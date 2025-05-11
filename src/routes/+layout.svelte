@@ -7,5 +7,5 @@
 {@render children()}
 
 <svelte:head>
-	<title>chill vgm livestreams</title>
+	<title>chill lofi streams</title>
 </svelte:head>

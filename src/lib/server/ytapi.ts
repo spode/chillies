@@ -22,35 +22,8 @@ export async function getLiveSearchResults(channelId: string) {
 
         const res = await youtubeThing.search.list(params);
 
-        return await res.data;
+        return res.data;
     } catch (error) {
         console.error('Error getting searchResults:', error);
     }
-}
-
-export async function getPlaylistItems(playlistId: string) {
-
-    let nextPageToken: string | null | undefined = "";
-    const allItems = [];
-
-    do {
-        const params: youtube_v3.Params$Resource$Playlistitems$List = {
-            playlistId: playlistId, // no need for array brackets
-            part: ["snippet"],
-            maxResults: 50,
-            pageToken: nextPageToken
-        };
-
-        const res = await youtubeThing.playlistItems.list(params);
-
-        if (res.data.items) {
-            allItems.push(...res.data.items);
-        }
-
-        nextPageToken = res.data.nextPageToken;
-        console.log("Next page token:", nextPageToken);
-
-    } while (nextPageToken);
-
-    return allItems
 }
