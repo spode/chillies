@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { delayed } from '$lib';
 	import { onMount } from 'svelte';
 
 	let { player = $bindable() } = $props();
 	let iframe = $state();
 
-	function onPlayerReady(event) {}
+	function onPlayerReady() {}
 
-	onMount(() => {
+	onMount(async () => {
+		await delayed(1000);
 		player = new YT.Player('denkPlayer', {
 			height: '390',
 			width: '640',
