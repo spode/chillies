@@ -8,7 +8,7 @@
 		<button
 			class="{activeStream == video
 				? 'bg-lime-400 dark:bg-gray-700'
-				: 'bg-zinc-100 dark:bg-gray-400'} cursor-pointer text-left flex-col flex rounded-2xl"
+				: 'bg-zinc-100 dark:bg-gray-900'} cursor-pointer text-left flex-col flex rounded-2xl"
 			onclick={() => {
 				console.log(video);
 

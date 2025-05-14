@@ -24,7 +24,7 @@
 			<Streams {activeStream} {playSong} videos={data.videos} />
 		{/if}
 		<button
-			class="dark:bg-primary dark:text-gray-100 bg-lime-400 text-black font-semibold py-4 px-2 cursor-pointer rounded-2xl m-1"
+			class="dark:bg-primary bg-lime-400 font-semibold py-4 px-2 cursor-pointer rounded-2xl m-1"
 			onclick={() => (streamsVisible = !streamsVisible)}
 			>{streamsVisible ? 'hide' : 'show'} playlists</button
 		>
