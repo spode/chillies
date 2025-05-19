@@ -4,13 +4,13 @@
 </script>
 
 <div
-	class="flex-1 flex flex-col xl:grid xl:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-2 row-span-2 overflow-auto px-2"
+	class="flex-1 content-start flex flex-col xl:grid xl:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-2 row-span-2 overflow-auto px-2"
 >
 	{#each videos as video}
 		<button
 			class="{activeStream == video
 				? 'bg-lime-400 dark:bg-gray-700'
-				: 'bg-zinc-100 dark:bg-gray-900'} cursor-pointer text-left flex-col flex rounded-2xl"
+				: 'bg-zinc-100 dark:bg-gray-900'} h-[100px] cursor-pointer text-left flex-col flex rounded-2xl"
 			onclick={() => {
 				console.log(video);
 
@@ -18,7 +18,7 @@
 			}}
 		>
 			<div class="stream rounded-xl overflow-hidden flex flex-row gap-4">
-				<img class=" object-cover" src={video.snippet?.thumbnails.medium.url} alt="" />
+				<img class="size-[100px] object-cover" src={video.snippet?.thumbnails.medium.url} alt="" />
 				<div class="flex flex-col justify-center">
 					<div class="text-lg lg:text-xl line-clamp-2">{decode(video?.snippet?.title)}</div>
 					<small class="text-neutral-600 dark:text-neutral-300">
