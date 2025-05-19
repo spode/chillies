@@ -1,18 +1,24 @@
 <script lang="ts">
 	import { decode } from 'html-entities';
 	let { videos, playSong, activeStream } = $props();
+
+	function scrollToButton(button: HTMLButtonElement) {
+		button.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+	}
 </script>
 
 <div
 	class="flex-1 content-start flex flex-col xl:grid xl:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-2 row-span-2 overflow-auto px-2"
 >
-	{#each videos as video}
+	{#each videos as video, index}
 		<button
 			class="{activeStream == video
 				? 'bg-lime-400 dark:bg-gray-700'
-				: 'bg-zinc-100 dark:bg-gray-900'} h-[100px] cursor-pointer text-left flex-col flex rounded-2xl"
-			onclick={() => {
-				console.log(video);
+				: 'bg-zinc-100 dark:bg-gray-900'} video-{index} h-[100px] cursor-pointer text-left flex-col flex rounded-2xl"
+			onclick={(e) => {
+				const targetElement = e.target as Element | null;
+				const button = targetElement?.closest('button');
+				if (button) scrollToButton(button);
 
 				playSong(video);
 			}}
