@@ -10,6 +10,8 @@ const youtubeThing = youtube({
 
 export async function getLiveSearchResults(channelId: string) {
 
+
+
     try {
 
         const params: youtube_v3.Params$Resource$Search$List = {
@@ -22,8 +24,11 @@ export async function getLiveSearchResults(channelId: string) {
 
         const res = await youtubeThing.search.list(params);
 
+        console.log("LIVESEARCH status", res.status, res.statusText);
+
+
         return res.data;
     } catch (error) {
-        console.error('Error getting searchResults:', error);
+        console.error('Error getting searchResults:', error.errors[0].message);
     }
 }

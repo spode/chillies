@@ -2,8 +2,8 @@
 	import { delayed } from '$lib';
 	import { onMount } from 'svelte';
 
-	let { player = $bindable() } = $props();
-	let iframe = $state();
+	let { player = $bindable(), playerVolume = $bindable() } = $props();
+	let iframe: HTMLIFrameElement = $state();
 
 	function onPlayerReady() {}
 
@@ -31,13 +31,12 @@
 <svelte:window
 	onmessage={(event) => {
 		var data = JSON.parse(event.data);
-		// console.log('BEANS', data.info);
 
-		// if (event.source === iframe.contentWindow) {
-		// 	if (data.event === 'infoDelivery' && data.info && data.info.volume) {
-		// 		myVolume = data.info.volume;
-		// 	}
-		// }
+		if (event.source === iframe.contentWindow) {
+			if (data.event === 'infoDelivery' && data.info && data.info.volume) {
+				playerVolume = data.info.volume;
+			}
+		}
 	}}
 />
 
