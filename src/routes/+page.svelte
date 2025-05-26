@@ -23,7 +23,7 @@
 	{#if streamsVisible}
 		<Streams {activeStream} {playSong} videos={data.videos} />
 	{/if}
-	<div class="flex flex-col">
+	<div class="flex flex-row lg:flex-col">
 		<button
 			class="dark:bg-primary bg-lime-400 font-semibold xl:w-24 xl:text-xl py-4 px-2 cursor-pointer rounded-2xl m-1 flex-1"
 			onclick={() => (streamsVisible = !streamsVisible)}

@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from './[[playlistId]]/$types';
 import { CHANNELS } from '$env/static/private';
 import { getLiveSearchResults } from '$lib/server/ytapi';
 import { error } from '@sveltejs/kit';
